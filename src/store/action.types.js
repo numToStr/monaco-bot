@@ -1,3 +1,6 @@
 export const MESSAGE_START = "MESSAGE_START";
 export const MESSAGE_SUCCESS = "MESSAGE_SUCCESS";
 export const MESSAGE_FAILURE = "MESSAGE_FAILURE";
+
+export const TAB_CREATE = "TAB_CREATE";
+export const TAB_CHANGE = "TAB_CHANGE";

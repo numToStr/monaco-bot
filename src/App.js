@@ -1,42 +1,43 @@
-import React, { useState } from "react";
+import React from "react";
 import { Grid } from "@material-ui/core";
-import Editor from "./Editor/Editor";
-import MessageArea from "./Messages/MessageArea";
-import { useMessageContext, useMessageDispatch } from "./MessageContext";
-import { ChatBot } from "./ChatBot";
+// import Editor from "./Editor/Editor";
+// import MessageArea from "./Messages/MessageArea";
+// import { useMessageContext, useMessageDispatch } from "./MessageContext";
+// import { ChatBot } from "./ChatBot";
+import EditorTabs from "./app/Editors/EditorTabs";
 
 const App = () => {
-    const [editorCode, setEditorCode] = useState("");
-    const messageList = useMessageContext();
-    const messageDispatch = useMessageDispatch();
+    // const [editorCode, setEditorCode] = useState("");
+    // const messageList = useMessageContext();
+    // const messageDispatch = useMessageDispatch();
 
-    const Bot = new ChatBot(messageDispatch);
+    // const Bot = new ChatBot(messageDispatch);
 
-    const onCodeRun = code => {
-        setEditorCode(code);
-    };
+    // const onCodeRun = code => {
+    //     setEditorCode(code);
+    // };
 
-    const onSubmit = message => {
-        if (!message || !editorCode) {
-            return;
-        }
+    // const onSubmit = message => {
+    //     if (!message || !editorCode) {
+    //         return;
+    //     }
 
-        // eslint-disable-next-line no-new-func
-        Function(`
-          "use strict";
+    //     // eslint-disable-next-line no-new-func
+    //     Function(`
+    //       "use strict";
 
-          return ( ${editorCode} )
-        `)()(Bot, message);
+    //       return ( ${editorCode} )
+    //     `)()(Bot, message);
 
-        messageDispatch({
-            type: "create",
-            payload: {
-                text: message,
-                createdAt: new Date(),
-                createdBy: "user"
-            }
-        });
-    };
+    //     messageDispatch({
+    //         type: "create",
+    //         payload: {
+    //             text: message,
+    //             createdAt: new Date(),
+    //             createdBy: "user"
+    //         }
+    //     });
+    // };
 
     return (
         <Grid
@@ -44,7 +45,7 @@ const App = () => {
             style={{
                 height: "100%"
             }}
-            spacing={2}
+            // spacing={2}
         >
             <Grid
                 item
@@ -53,13 +54,14 @@ const App = () => {
                     position: "relative"
                 }}
             >
-                <Editor onSubmit={onCodeRun} />
+                {/* <Editor onSubmit={onCodeRun} /> */}
+                <EditorTabs />
             </Grid>
             <Grid item xs={6}>
-                <MessageArea
+                {/* <MessageArea
                     messageList={messageList.values}
                     onSubmit={onSubmit}
-                />
+                /> */}
             </Grid>
         </Grid>
     );
