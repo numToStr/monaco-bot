@@ -11,8 +11,8 @@ const MessageItem = ({ node }) => {
             my={2}
         >
             <Box
-                bgcolor={isUser ? "black" : "grey"}
-                color={isUser ? "white" : "black"}
+                bgcolor={isUser ? "black" : "gray"}
+                color="white"
                 borderRadius="borderRadius"
                 py={1}
                 px={2}

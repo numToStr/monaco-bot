@@ -1,11 +1,18 @@
 import { TAB_CREATE, TAB_CHANGE, EDITOR_CHANGE } from "../action.types";
 
+const value = `// Start typing your first program
+
+function main(message) {
+    Bot.reply(message)
+}
+`;
+
 const initialState = {
     nodes: [
         {
             label: "New Tab",
             index: 0,
-            value: "// Start typing your first program"
+            value
         }
     ],
     currentTab: 0

@@ -6,14 +6,11 @@ export class ChatBot {
     reply(message) {
         setTimeout(() => {
             this.dispatch({
-                type: "create",
-                payload: {
-                    text: message,
-                    createdAt: new Date(),
-                    createdBy: "bot"
-                }
+                message,
+                createdAt: new Date(),
+                createdBy: "bot"
             });
-        }, 1000);
+        }, 500);
     }
 
     sleep(time) {
@@ -23,13 +20,10 @@ export class ChatBot {
     getNouns() {
         setTimeout(() => {
             this.dispatch({
-                type: "create",
-                payload: {
-                    text: "Nouns: a, e, i, o, u",
-                    createdAt: new Date(),
-                    createdBy: "bot"
-                }
+                message: "Nouns: a, e, i, o, u",
+                createdAt: new Date(),
+                createdBy: "bot"
             });
-        }, 1000);
+        }, 500);
     }
 }

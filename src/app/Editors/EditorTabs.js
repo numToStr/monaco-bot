@@ -4,6 +4,13 @@ import { Tabs, Tab, Grid, Box, Fab } from "@material-ui/core";
 import EditorTabPanels from "./EditorTabPanels";
 import { onTabCreate, onTabChange } from "../../store/actions/tab.action";
 
+const value = `// Start typing your first program
+
+function main(message) {
+    Bot.reply(message)
+}
+`;
+
 const EditorTabs = ({
     $onTabCreate,
     $onTabChange,
@@ -19,7 +26,7 @@ const EditorTabs = ({
         $onTabCreate({
             node: {
                 label: `Untitled ${tabsLength}`,
-                value: `// Tab ${tabsLength}\n// Start typing your first program`,
+                value,
                 index: tabsLength
             },
             currentTab: tabsLength
