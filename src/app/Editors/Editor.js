@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import MonacoEditor from "react-monaco-editor";
 import { onEditorChange } from "../../store/actions/tab.action";
+import { Box } from "@material-ui/core";
 
 const Editor = ({ $onEditorChange, onSubmit, panel, ...props }) => {
     const onChangeCode = value => {
@@ -20,7 +21,7 @@ const Editor = ({ $onEditorChange, onSubmit, panel, ...props }) => {
     };
 
     return (
-        <div style={{ height: "100%" }} {...props}>
+        <Box height="100%" {...props}>
             <MonacoEditor
                 language="javascript"
                 theme="vs-dark"
@@ -29,7 +30,7 @@ const Editor = ({ $onEditorChange, onSubmit, panel, ...props }) => {
                 onChange={onChangeCode}
                 editorDidMount={onEditorMount}
             />
-        </div>
+        </Box>
     );
 };
 

@@ -1,6 +1,6 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { connect } from "react-redux";
-import { Tabs, Tab, Button, Grid } from "@material-ui/core";
+import { Tabs, Tab, Button, Grid, Box } from "@material-ui/core";
 import EditorTabPanels from "./EditorTabPanels";
 import { onTabCreate, onTabChange } from "../../store/actions/tab.action";
 
@@ -31,7 +31,7 @@ const EditorTabs = ({
     ));
 
     return (
-        <Fragment>
+        <Box display="flex" flexDirection="column" height="100%">
             <Grid container alignItems="center">
                 <Grid item xs>
                     <Tabs
@@ -49,7 +49,7 @@ const EditorTabs = ({
                 </Grid>
             </Grid>
             <EditorTabPanels currentTab={currentTab} panels={tabList} />
-        </Fragment>
+        </Box>
     );
 };
 

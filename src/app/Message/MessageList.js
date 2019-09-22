@@ -8,7 +8,11 @@ const MessageList = ({ messageList }) => {
         <MessageItem key={index} node={node} />
     ));
 
-    return <Box flexGrow={1}>{list}</Box>;
+    return (
+        <Box height="100%" px={1} my={2} overflow="auto">
+            {list}
+        </Box>
+    );
 };
 
 const mapStateToProps = ({ messages }) => ({
