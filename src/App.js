@@ -1,22 +1,14 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
-// import Editor from "./Editor/Editor";
 // import MessageArea from "./Messages/MessageArea";
-// import { useMessageContext, useMessageDispatch } from "./MessageContext";
 // import { ChatBot } from "./ChatBot";
 import EditorTabs from "./app/Editors/EditorTabs";
 
 const App = () => {
-    // const [editorCode, setEditorCode] = useState("");
     // const messageList = useMessageContext();
     // const messageDispatch = useMessageDispatch();
 
     // const Bot = new ChatBot(messageDispatch);
-
-    // const onCodeRun = code => {
-    //     setEditorCode(code);
-    // };
-
     // const onSubmit = message => {
     //     if (!message || !editorCode) {
     //         return;
@@ -47,14 +39,7 @@ const App = () => {
             }}
             // spacing={2}
         >
-            <Grid
-                item
-                xs={6}
-                style={{
-                    position: "relative"
-                }}
-            >
-                {/* <Editor onSubmit={onCodeRun} /> */}
+            <Grid item xs={6}>
                 <EditorTabs />
             </Grid>
             <Grid item xs={6}>

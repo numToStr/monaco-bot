@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { Tabs, Tab, Button, Grid } from "@material-ui/core";
-import EditorTabPanel from "./EditorTabPanel";
+import EditorTabPanels from "./EditorTabPanels";
 import { onTabCreate, onTabChange } from "../../store/actions/tab.action";
 
 const EditorTabs = ({
@@ -19,7 +19,7 @@ const EditorTabs = ({
         $onTabCreate({
             node: {
                 label: `Untitled ${tabsLength}`,
-                value: `Value ${tabsLength}`,
+                value: `// Tab ${tabsLength}\n// Start typing your first program`,
                 index: tabsLength
             },
             currentTab: tabsLength
@@ -30,14 +30,10 @@ const EditorTabs = ({
         <Tab key={index} label={label} />
     ));
 
-    const tabPanels = tabList.map(({ index }) => (
-        <EditorTabPanel key={index} currentTab={currentTab} index={index} />
-    ));
-
     return (
         <Fragment>
             <Grid container alignItems="center">
-                <Grid item>
+                <Grid item xs>
                     <Tabs
                         value={currentTab}
                         onChange={handleTabChange}
@@ -52,7 +48,7 @@ const EditorTabs = ({
                     </Button>
                 </Grid>
             </Grid>
-            {tabPanels}
+            <EditorTabPanels currentTab={currentTab} panels={tabList} />
         </Fragment>
     );
 };

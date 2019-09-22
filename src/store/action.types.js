@@ -4,3 +4,5 @@ export const MESSAGE_FAILURE = "MESSAGE_FAILURE";
 
 export const TAB_CREATE = "TAB_CREATE";
 export const TAB_CHANGE = "TAB_CHANGE";
+
+export const EDITOR_CHANGE = "EDITOR_CHANGE";
