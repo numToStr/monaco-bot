@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid, Box } from "@material-ui/core";
-import EditorTabs from "./app/Editors/EditorTabs";
+import EditorTabs from "./app/Editor/EditorTabs";
 import ChatField from "./app/Chat/ChatField";
 import MessageList from "./app/Message/MessageList";
 import FullHeight from "./components/FullHeight";
