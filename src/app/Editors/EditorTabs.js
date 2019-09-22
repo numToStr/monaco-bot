@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Tabs, Tab, Button, Grid, Box } from "@material-ui/core";
+import { Tabs, Tab, Grid, Box, Fab } from "@material-ui/core";
 import EditorTabPanels from "./EditorTabPanels";
 import { onTabCreate, onTabChange } from "../../store/actions/tab.action";
 
@@ -33,19 +33,21 @@ const EditorTabs = ({
     return (
         <Box display="flex" flexDirection="column" height="100%">
             <Grid container alignItems="center">
-                <Grid item xs>
-                    <Tabs
-                        value={currentTab}
-                        onChange={handleTabChange}
-                        aria-label="simple tabs example"
-                    >
-                        {tabs}
-                    </Tabs>
-                </Grid>
+                <Box width="100%" overflow="auto" clone>
+                    <Grid item xs>
+                        <Tabs
+                            value={currentTab}
+                            onChange={handleTabChange}
+                            aria-label="Editor Tabs"
+                        >
+                            {tabs}
+                        </Tabs>
+                    </Grid>
+                </Box>
                 <Grid item>
-                    <Button size="small" onClick={addTab}>
+                    <Fab color="inherit" size="small" onClick={addTab}>
                         +
-                    </Button>
+                    </Fab>
                 </Grid>
             </Grid>
             <EditorTabPanels currentTab={currentTab} panels={tabList} />
