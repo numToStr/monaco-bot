@@ -13,7 +13,10 @@ const handleMessageStart = (state, payload) => {
     return state;
 };
 const handleMessageSuccess = (state, payload) => {
-    return state;
+    return {
+        ...state,
+        nodes: [...state.nodes, payload]
+    };
 };
 
 const handleMessageFailure = (state, payload) => {

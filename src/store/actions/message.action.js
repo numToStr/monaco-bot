@@ -4,12 +4,13 @@ import {
     MESSAGE_FAILURE
 } from "../action.types";
 
-export const onMessage = () => ({
+export const onMessageStart = () => ({
     type: MESSAGE_START
 });
 
-export const onMessageSuccess = () => ({
-    type: MESSAGE_SUCCESS
+export const onMessageSuccess = payload => ({
+    type: MESSAGE_SUCCESS,
+    payload
 });
 
 export const onMessageFailure = () => ({
