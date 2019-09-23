@@ -1,8 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Tabs, Tab, Grid, Box, Fab } from "@material-ui/core";
+import { Grid, Box, Fab, Tooltip } from "@material-ui/core";
 import EditorTabPanels from "./EditorTabPanels";
 import { onTabCreate, onTabChange } from "../../store/actions/tab.action";
+import { StyledTabs, StyledTab } from "../../components/StyledTabs";
 
 const value = `// Start typing your first program
 
@@ -34,7 +35,7 @@ const EditorTabs = ({
     };
 
     const tabs = tabList.map(({ label }, index) => (
-        <Tab key={index} label={label} />
+        <StyledTab key={index} label={label} />
     ));
 
     return (
@@ -42,19 +43,21 @@ const EditorTabs = ({
             <Grid container alignItems="center">
                 <Box width="100%" overflow="auto" clone>
                     <Grid item xs>
-                        <Tabs
+                        <StyledTabs
                             value={currentTab}
                             onChange={handleTabChange}
                             aria-label="Editor Tabs"
                         >
                             {tabs}
-                        </Tabs>
+                        </StyledTabs>
                     </Grid>
                 </Box>
                 <Grid item>
-                    <Fab size="small" onClick={addTab}>
-                        +
-                    </Fab>
+                    <Tooltip title="New Tab">
+                        <Fab size="small" onClick={addTab}>
+                            +
+                        </Fab>
+                    </Tooltip>
                 </Grid>
             </Grid>
             <EditorTabPanels currentTab={currentTab} panels={tabList} />
