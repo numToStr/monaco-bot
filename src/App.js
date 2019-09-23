@@ -21,6 +21,11 @@ const App = () => {
                                 height="100%"
                                 display="flex"
                                 flexDirection="column"
+                                bgcolor="#222"
+                                borderRadius="borderRadius"
+                                px={4}
+                                pb={4}
+                                pt={2}
                             >
                                 <MessageList />
                                 <ChatField />

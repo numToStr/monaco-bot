@@ -4,8 +4,12 @@ import grey from "@material-ui/core/colors/grey";
 
 export default createMuiTheme({
     palette: {
+        type: "dark",
         primary: grey,
-        secondary: grey
+        secondary: grey,
+        background: {
+            default: "#000"
+        }
     },
     typography: {
         fontFamily: [

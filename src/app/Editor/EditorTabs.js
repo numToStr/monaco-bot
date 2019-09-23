@@ -52,7 +52,7 @@ const EditorTabs = ({
                     </Grid>
                 </Box>
                 <Grid item>
-                    <Fab color="inherit" size="small" onClick={addTab}>
+                    <Fab size="small" onClick={addTab}>
                         +
                     </Fab>
                 </Grid>

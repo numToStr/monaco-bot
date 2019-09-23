@@ -1,5 +1,5 @@
 import React from "react";
-import { TextField } from "@material-ui/core";
+import { InputBase, Box } from "@material-ui/core";
 
 const FormikTextField = ({
     field, // { name, value, onChange, onBlur }
@@ -8,14 +8,21 @@ const FormikTextField = ({
 }) => {
     const error = errors[field.name];
     return (
-        <TextField
-            variant="outlined"
-            error={touched && error ? true : false}
-            helperText={touched && error ? `- ${error}` : null}
-            fullWidth
-            {...field}
-            {...props}
-        />
+        <Box
+            bgcolor="background.paper"
+            borderRadius="borderRadius"
+            py={2}
+            px={3}
+        >
+            <InputBase
+                variant="outlined"
+                error={touched && error ? true : false}
+                helperText={touched && error ? `- ${error}` : null}
+                fullWidth
+                {...field}
+                {...props}
+            />
+        </Box>
     );
 };
 

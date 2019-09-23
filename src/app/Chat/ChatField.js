@@ -40,7 +40,6 @@ const ChatField = ({ $onMessage, currentTab }) => {
                 <Form>
                     <Field
                         name="message"
-                        label="Message"
                         placeholder="Type your message here..."
                         component={FormikTextField}
                         autoFocus={true}
