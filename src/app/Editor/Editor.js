@@ -38,7 +38,4 @@ const mapDispatchToProps = {
     $onEditorChange: onEditorChange
 };
 
-export default connect(
-    null,
-    mapDispatchToProps
-)(Editor);
+export default connect(null, mapDispatchToProps)(Editor);
