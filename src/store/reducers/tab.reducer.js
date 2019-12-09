@@ -7,7 +7,7 @@ import {
 
 const value = `// Start typing your first program
 
-function main(message) {
+async function main(message) {
     Bot.reply(message)
 }
 `;

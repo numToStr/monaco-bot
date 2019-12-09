@@ -10,7 +10,7 @@ export class ChatBot {
                 createdAt: new Date(),
                 createdBy: "bot"
             });
-        }, 500);
+        }, 1000);
     }
 
     sleep(time) {

@@ -14,6 +14,10 @@ const ChatField = ({ $onMessage, currentCode }) => {
             return;
         }
 
+        if (!currentCode) {
+            return alert("Please sync your code.");
+        }
+
         try {
             const script = `
                 (${currentCode})('${message}');
