@@ -21,6 +21,7 @@ const initialState = {
         }
     ],
     currentCode: "",
+    syncDisabled: true,
     currentTab: 0
 };
 
@@ -46,7 +47,8 @@ const handleEditorChange = (state, { index, value }) => {
 
     return {
         ...state,
-        nodes
+        nodes,
+        syncDisabled: value === state.currentCode
     };
 };
 
@@ -59,7 +61,8 @@ const handleSyncCode = state => {
 
     return {
         ...state,
-        currentCode: ctx.value
+        currentCode: ctx.value,
+        syncDisabled: true
     };
 };
 

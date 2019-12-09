@@ -23,7 +23,8 @@ const EditorTabs = ({
     $onSyncCode,
     tabList,
     tabsLength,
-    currentTab
+    currentTab,
+    syncDisabled
 }) => {
     const handleTabChange = (_, newValue) => {
         $onTabChange({ currentTab: newValue });
@@ -69,6 +70,7 @@ const EditorTabs = ({
                             size="small"
                             variant="contained"
                             onClick={$onSyncCode}
+                            disabled={syncDisabled}
                         >
                             Sync
                         </Button>
@@ -83,7 +85,8 @@ const EditorTabs = ({
 const mapStateToProps = ({ tabs }) => ({
     tabList: tabs.nodes,
     tabsLength: tabs.nodes.length,
-    currentTab: tabs.currentTab
+    currentTab: tabs.currentTab,
+    syncDisabled: tabs.syncDisabled
 });
 
 const mapDispatchToProps = {
