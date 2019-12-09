@@ -21,7 +21,7 @@ const Editor = ({ $onEditorChange, onSubmit, panel, ...props }) => {
     };
 
     return (
-        <Box height="100%" {...props}>
+        <Box height="100%" width="100%" {...props}>
             <MonacoEditor
                 language="javascript"
                 theme="vs-dark"

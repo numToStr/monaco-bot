@@ -9,13 +9,7 @@ import {
 } from "../../store/actions/tab.action";
 import { StyledTabs, StyledTab } from "../../components/StyledTabs";
 import AddIcon from "../../components/AddIcon";
-
-const value = `// Start typing your first program
-
-async function main(message) {
-    Bot.reply(message)
-}
-`;
+import { editorDefaultValue } from "../../constants";
 
 const EditorTabs = ({
     $onTabCreate,
@@ -34,7 +28,7 @@ const EditorTabs = ({
         $onTabCreate({
             node: {
                 label: `Untitled ${tabsLength}`,
-                value,
+                value: editorDefaultValue,
                 index: tabsLength
             },
             currentTab: tabsLength

@@ -4,24 +4,18 @@ import {
     EDITOR_CHANGE,
     SYNC_CODE
 } from "../action.types";
-
-const value = `// Start typing your first program
-
-async function main(message) {
-    Bot.reply(message)
-}
-`;
+import { editorDefaultValue } from "../../constants";
 
 const initialState = {
     nodes: [
         {
             label: "New Tab",
             index: 0,
-            value
+            value: editorDefaultValue
         }
     ],
     currentCode: "",
-    syncDisabled: true,
+    syncDisabled: false,
     currentTab: 0
 };
 
