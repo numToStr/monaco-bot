@@ -17,7 +17,16 @@ const Editor = ({ $onEditorChange, onSubmit, panel, ...props }) => {
     };
 
     const options = {
-        selectOnLineNumbers: true
+        selectOnLineNumbers: true,
+        minimap: {
+            enabled: false,
+            maxColumn: 0
+        },
+        scrollbar: {
+            horizontal: "hidden",
+            vertical: "hidden",
+            verticalScrollbarSize: 0
+        }
     };
 
     return (

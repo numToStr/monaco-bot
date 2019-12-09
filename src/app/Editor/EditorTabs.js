@@ -40,7 +40,7 @@ const EditorTabs = ({
     ));
 
     return (
-        <Box display="flex" flexDirection="column" height="100%">
+        <Box display="flex" flexDirection="column" height="100%" width="100%">
             <Grid container alignItems="center">
                 {/* <Box width="100%" overflow="auto" clone> */}
                 <Grid item>
