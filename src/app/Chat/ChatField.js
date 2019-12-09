@@ -6,7 +6,7 @@ import FormikTextField from "../../components/FormikTextField";
 import { onMessageSuccess } from "../../store/actions/message.action";
 import { ChatBot } from "../../ChatBot";
 
-const ChatField = ({ $onMessage, currentTab }) => {
+const ChatField = ({ $onMessage, currentCode }) => {
     const Bot = new ChatBot($onMessage);
 
     const onSubmit = ({ message }, { resetForm }) => {
@@ -16,7 +16,7 @@ const ChatField = ({ $onMessage, currentTab }) => {
 
         try {
             const script = `
-                (${currentTab.value})('${message}');
+                (${currentCode})('${message}');
             `;
 
             safeEval(script, {
@@ -51,14 +51,11 @@ const ChatField = ({ $onMessage, currentTab }) => {
 };
 
 const mapStateToProps = ({ tabs }) => ({
-    currentTab: tabs.nodes.find(tab => tab.index === tabs.currentTab)
+    currentCode: tabs.currentCode
 });
 
 const mapDispatchToProps = {
     $onMessage: onMessageSuccess
 };
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(memo(ChatField));
+export default connect(mapStateToProps, mapDispatchToProps)(memo(ChatField));

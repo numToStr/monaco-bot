@@ -1,4 +1,9 @@
-import { TAB_CREATE, TAB_CHANGE, EDITOR_CHANGE } from "../action.types";
+import {
+    TAB_CREATE,
+    TAB_CHANGE,
+    EDITOR_CHANGE,
+    SYNC_CODE
+} from "../action.types";
 
 const value = `// Start typing your first program
 
@@ -15,6 +20,7 @@ const initialState = {
             value
         }
     ],
+    currentCode: "",
     currentTab: 0
 };
 
@@ -44,6 +50,19 @@ const handleEditorChange = (state, { index, value }) => {
     };
 };
 
+const handleSyncCode = state => {
+    const ctx = state.nodes.find(node => node.index === state.currentTab);
+
+    if (!ctx) {
+        return state;
+    }
+
+    return {
+        ...state,
+        currentCode: ctx.value
+    };
+};
+
 const reducer = (state = initialState, { type, payload }) => {
     switch (type) {
         case TAB_CREATE:
@@ -52,6 +71,8 @@ const reducer = (state = initialState, { type, payload }) => {
             return handleTabChange(state, payload);
         case EDITOR_CHANGE:
             return handleEditorChange(state, payload);
+        case SYNC_CODE:
+            return handleSyncCode(state, payload);
         default:
             return state;
     }

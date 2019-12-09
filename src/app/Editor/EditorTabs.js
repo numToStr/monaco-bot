@@ -2,7 +2,11 @@ import React from "react";
 import { connect } from "react-redux";
 import { Grid, Box, IconButton, Tooltip, Button } from "@material-ui/core";
 import EditorTabPanels from "./EditorTabPanels";
-import { onTabCreate, onTabChange } from "../../store/actions/tab.action";
+import {
+    onTabCreate,
+    onTabChange,
+    onSyncCode
+} from "../../store/actions/tab.action";
 import { StyledTabs, StyledTab } from "../../components/StyledTabs";
 import AddIcon from "../../components/AddIcon";
 
@@ -16,6 +20,7 @@ function main(message) {
 const EditorTabs = ({
     $onTabCreate,
     $onTabChange,
+    $onSyncCode,
     tabList,
     tabsLength,
     currentTab
@@ -60,7 +65,11 @@ const EditorTabs = ({
                                 <AddIcon />
                             </IconButton>
                         </Tooltip>
-                        <Button size="small" variant="contained">
+                        <Button
+                            size="small"
+                            variant="contained"
+                            onClick={$onSyncCode}
+                        >
                             Sync
                         </Button>
                     </Box>
@@ -79,7 +88,8 @@ const mapStateToProps = ({ tabs }) => ({
 
 const mapDispatchToProps = {
     $onTabCreate: onTabCreate,
-    $onTabChange: onTabChange
+    $onTabChange: onTabChange,
+    $onSyncCode: onSyncCode
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditorTabs);

@@ -1,4 +1,9 @@
-import { TAB_CREATE, TAB_CHANGE, EDITOR_CHANGE } from "../action.types";
+import {
+    TAB_CREATE,
+    TAB_CHANGE,
+    EDITOR_CHANGE,
+    SYNC_CODE
+} from "../action.types";
 
 export const onTabCreate = payload => ({
     type: TAB_CREATE,
@@ -13,4 +18,8 @@ export const onTabChange = payload => ({
 export const onEditorChange = payload => ({
     type: EDITOR_CHANGE,
     payload
+});
+
+export const onSyncCode = () => ({
+    type: SYNC_CODE
 });
