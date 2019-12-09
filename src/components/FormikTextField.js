@@ -17,7 +17,7 @@ const FormikTextField = ({
             <InputBase
                 variant="outlined"
                 error={touched && error ? true : false}
-                helperText={touched && error ? `- ${error}` : null}
+                helpertext={touched && error ? `- ${error}` : null}
                 fullWidth
                 {...field}
                 {...props}
