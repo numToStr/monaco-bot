@@ -1,3 +1,4 @@
+import produce from "immer";
 import {
     TAB_CREATE,
     TAB_CHANGE,
@@ -19,31 +20,24 @@ const initialState = {
     currentTab: 0
 };
 
-const handleTabCreate = (state, { node, currentTab }) => ({
-    ...state,
-    nodes: [...state.nodes, node],
-    currentTab
-});
+const handleTabCreate = (state, { node, currentTab }) => {
+    state.currentTab = currentTab;
+    state.nodes.push(node);
+};
 
-const handleTabChange = (state, { currentTab }) => ({
-    ...state,
-    currentTab
-});
+const handleTabChange = (state, { currentTab }) => {
+    state.currentTab = currentTab;
+};
 
 const handleEditorChange = (state, { index, value }) => {
-    const nodes = state.nodes.map(node => {
+    state.syncDisabled = value === state.currentCode;
+    state.nodes = state.nodes.map(node => {
         if (node.index === index) {
             node.value = value;
         }
 
         return node;
     });
-
-    return {
-        ...state,
-        nodes,
-        syncDisabled: value === state.currentCode
-    };
 };
 
 const handleSyncCode = state => {
@@ -53,14 +47,11 @@ const handleSyncCode = state => {
         return state;
     }
 
-    return {
-        ...state,
-        currentCode: ctx.value,
-        syncDisabled: true
-    };
+    state.currentCode = ctx.value;
+    state.syncDisabled = true;
 };
 
-const reducer = (state = initialState, { type, payload }) => {
+const reducer = produce((state = initialState, { type, payload }) => {
     switch (type) {
         case TAB_CREATE:
             return handleTabCreate(state, payload);
@@ -73,6 +64,6 @@ const reducer = (state = initialState, { type, payload }) => {
         default:
             return state;
     }
-};
+});
 
 export default reducer;

@@ -1,3 +1,4 @@
+import produce from "immer";
 import {
     MESSAGE_START,
     MESSAGE_SUCCESS,
@@ -12,18 +13,16 @@ const initialState = {
 const handleMessageStart = (state, payload) => {
     return state;
 };
+
 const handleMessageSuccess = (state, payload) => {
-    return {
-        ...state,
-        nodes: [...state.nodes, payload]
-    };
+    state.nodes.push(payload);
 };
 
 const handleMessageFailure = (state, payload) => {
     return state;
 };
 
-const reducer = (state = initialState, { type, payload }) => {
+const reducer = produce((state = initialState, { type, payload }) => {
     switch (type) {
         case MESSAGE_START:
             return handleMessageStart(state, payload);
@@ -34,6 +33,6 @@ const reducer = (state = initialState, { type, payload }) => {
         default:
             return state;
     }
-};
+});
 
 export default reducer;
