@@ -54,11 +54,17 @@ const EditorTabs = ({
                 </Grid>
                 {/* </Box> */}
                 <Grid item xs>
-                    <Box display="flex" justifyContent="space-between">
-                        <Tooltip title="New Tab">
-                            <IconButton size="small" onClick={addTab}>
-                                <AddIcon />
-                            </IconButton>
+                    <Box
+                        display="flex"
+                        justifyContent="space-between"
+                        alignItems="center"
+                    >
+                        <Tooltip arrow placement="right" title="New Tab">
+                            <Box ml={1}>
+                                <IconButton size="small" onClick={addTab}>
+                                    <AddIcon fontSize="small" />
+                                </IconButton>
+                            </Box>
                         </Tooltip>
                         <Button
                             size="small"

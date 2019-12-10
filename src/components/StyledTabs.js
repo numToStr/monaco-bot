@@ -1,7 +1,7 @@
 import React from "react";
 import { withStyles, Tab, Tabs } from "@material-ui/core";
 
-export const StyledTabs = withStyles(({ palette }) => ({
+export const StyledTabs = withStyles(({ palette, typography }) => ({
     indicator: {
         display: "flex",
         justifyContent: "center",
@@ -13,15 +13,18 @@ export const StyledTabs = withStyles(({ palette }) => ({
     },
     scroller: {
         overflow: "auto !important"
+    },
+    root: {
+        minHeight: typography.pxToRem(40)
     }
 }))(props => <Tabs {...props} TabIndicatorProps={{ children: <div /> }} />);
 
-export const StyledTab = withStyles(({ spacing, typography }) => ({
+export const StyledTab = withStyles(({ typography }) => ({
     root: {
         minWidth: "auto",
         textTransform: "none",
         fontWeight: typography.fontWeightRegular,
-        fontSize: typography.pxToRem(14),
-        marginRight: spacing(1)
+        fontSize: typography.pxToRem(10),
+        minHeight: typography.pxToRem(40)
     }
 }))(props => <Tab disableRipple {...props} />);
