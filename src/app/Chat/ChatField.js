@@ -24,11 +24,11 @@ const ChatField = ({ $onMessage, currentCode }) => {
             `;
 
             safeEval(script, {
-                Bot
+                Bot,
             });
             $onMessage({
                 message,
-                createdBy: "user"
+                createdBy: "user",
             });
             resetForm();
         } catch (error) {
@@ -37,10 +37,8 @@ const ChatField = ({ $onMessage, currentCode }) => {
     };
 
     return (
-        <Formik
-            onSubmit={onSubmit}
-            initialValues={{ message: "" }}
-            render={() => (
+        <Formik onSubmit={onSubmit} initialValues={{ message: "" }}>
+            {() => (
                 <Form>
                     <Field
                         name="message"
@@ -50,16 +48,16 @@ const ChatField = ({ $onMessage, currentCode }) => {
                     />
                 </Form>
             )}
-        />
+        </Formik>
     );
 };
 
 const mapStateToProps = ({ tabs }) => ({
-    currentCode: tabs.currentCode
+    currentCode: tabs.currentCode,
 });
 
 const mapDispatchToProps = {
-    $onMessage: onMessageSuccess
+    $onMessage: onMessageSuccess,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(memo(ChatField));
