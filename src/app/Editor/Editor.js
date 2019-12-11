@@ -1,15 +1,19 @@
 import React from "react";
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 import MonacoEditor from "react-monaco-editor";
+import Box from "@material-ui/core/Box";
 import { onEditorChange } from "../../store/actions/tab.action";
-import { Box } from "@material-ui/core";
 
-const Editor = ({ $onEditorChange, onSubmit, panel, ...props }) => {
+const Editor = ({ onSubmit, panel, ...props }) => {
+    const dispatch = useDispatch();
+
     const onChangeCode = value => {
-        $onEditorChange({
-            value,
-            index: panel.index
-        });
+        dispatch(
+            onEditorChange({
+                value,
+                index: panel.index,
+            })
+        );
     };
 
     const onEditorMount = editor => {
@@ -20,13 +24,13 @@ const Editor = ({ $onEditorChange, onSubmit, panel, ...props }) => {
         selectOnLineNumbers: true,
         minimap: {
             enabled: false,
-            maxColumn: 0
+            maxColumn: 0,
         },
         scrollbar: {
             horizontal: "hidden",
             vertical: "hidden",
-            verticalScrollbarSize: 0
-        }
+            verticalScrollbarSize: 0,
+        },
     };
 
     return (
@@ -43,8 +47,4 @@ const Editor = ({ $onEditorChange, onSubmit, panel, ...props }) => {
     );
 };
 
-const mapDispatchToProps = {
-    $onEditorChange: onEditorChange
-};
-
-export default connect(null, mapDispatchToProps)(Editor);
+export default Editor;
