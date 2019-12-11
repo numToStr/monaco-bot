@@ -1,13 +1,23 @@
-import React, { memo } from "react";
-import { connect } from "react-redux";
+import React, { memo, useCallback } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Formik, Form, Field } from "formik";
 import safeEval from "safe-eval";
 import FormikTextField from "../../components/FormikTextField";
 import { onMessageSuccess } from "../../store/actions/message.action";
 import { ChatBot } from "../../ChatBot";
 
-const ChatField = ({ $onMessage, currentCode }) => {
-    const Bot = new ChatBot($onMessage);
+const ChatField = () => {
+    const dispatch = useDispatch();
+    const currentCode = useSelector(store => store.tabs.currentCode);
+
+    const onMessage = useCallback(
+        payload => {
+            dispatch(onMessageSuccess(payload));
+        },
+        [dispatch]
+    );
+
+    const Bot = new ChatBot(onMessage);
 
     const onSubmit = ({ message }, { resetForm }) => {
         if (!message) {
@@ -24,11 +34,12 @@ const ChatField = ({ $onMessage, currentCode }) => {
             `;
 
             safeEval(script, {
-                Bot
+                Bot,
             });
-            $onMessage({
+
+            onMessage({
                 message,
-                createdBy: "user"
+                createdBy: "user",
             });
             resetForm();
         } catch (error) {
@@ -37,10 +48,8 @@ const ChatField = ({ $onMessage, currentCode }) => {
     };
 
     return (
-        <Formik
-            onSubmit={onSubmit}
-            initialValues={{ message: "" }}
-            render={() => (
+        <Formik onSubmit={onSubmit} initialValues={{ message: "" }}>
+            {() => (
                 <Form>
                     <Field
                         name="message"
@@ -50,16 +59,8 @@ const ChatField = ({ $onMessage, currentCode }) => {
                     />
                 </Form>
             )}
-        />
+        </Formik>
     );
 };
 
-const mapStateToProps = ({ tabs }) => ({
-    currentCode: tabs.currentCode
-});
-
-const mapDispatchToProps = {
-    $onMessage: onMessageSuccess
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(memo(ChatField));
+export default memo(ChatField);

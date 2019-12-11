@@ -3,7 +3,7 @@ import {
     TAB_CREATE,
     TAB_CHANGE,
     EDITOR_CHANGE,
-    SYNC_CODE
+    SYNC_CODE,
 } from "../action.types";
 import { editorDefaultValue } from "../../constants";
 
@@ -12,12 +12,12 @@ const initialState = {
         {
             label: "New Tab",
             index: 0,
-            value: editorDefaultValue
-        }
+            value: editorDefaultValue,
+        },
     ],
     currentCode: "",
     syncDisabled: false,
-    currentTab: 0
+    currentTab: 0,
 };
 
 const handleTabCreate = (state, { node, currentTab }) => {
