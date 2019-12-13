@@ -1,5 +1,6 @@
 import React from "react";
-import { InputBase, Box } from "@material-ui/core";
+import Box from "@material-ui/core/Box";
+import InputBase from "@material-ui/core/InputBase";
 
 const FormikTextField = ({
     field, // { name, value, onChange, onBlur }

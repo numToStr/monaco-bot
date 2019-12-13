@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid, Box } from "@material-ui/core";
-import EditorTabs from "./app/Editor/EditorTabs";
+import Editor from "./app/Editor/Editor";
 import ChatField from "./app/Chat/ChatField";
 import MessageList from "./app/Message/MessageList";
 import FullHeight from "./components/FullHeight";
@@ -12,7 +12,7 @@ const App = () => {
                 <Grid container spacing={2}>
                     <FullHeight>
                         <Grid item xs={6}>
-                            <EditorTabs />
+                            <Editor />
                         </Grid>
                     </FullHeight>
                     <FullHeight>
